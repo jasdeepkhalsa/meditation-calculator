@@ -4,25 +4,72 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Meditation Calculator</title>
-  <script src="js/bundle.js"></script>
 </head>
 <body>
   <h1 title="meditation goal calculator">Meditation Goal Calculator</h1>
   <form class="meditation-calc">
-    <p><label for="remaining-years">Meditation Time</label> <select name="time" />
+    <p><label>Meditation Time:</label> <input class="value" /> <select class="format" />
       <option value="seconds">Seconds</option>
       <option value="minutes">Minutes</option>
-      <option value="hours">Hours</option>
-    </select> per <label for="remaining-years"></label> <select name="period" />
-      <option value="day">Day</option>
-      <option value="week">Week</option>
-      <option value="month">Month</option>
-      <option value="year">Year</option>
+      <option value="hours" selected>Hours</option>
+    </select> <label>per</label> <select class="duration" />
+      <option value="days">Day</option>
+      <option value="weeks">Week</option>
+      <option value="months">Month</option>
+      <option value="years">Year</option>
     </select></p>
     <p></p>
-    <p><label for="remaining-years">Remaining Years</label> <input type="text" name="remaining-years" /></p>
-    <p><button type="submit">Calculate</button></p>
+    <p><label>Remaining Years:</label> <input type="text" class="years" /></p>
+    <p><label>Output Time Format:</label> <select class="outputFormat" />
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+      <option value="hours" selected>Hours</option>
+      <option value="days">Day</option>
+      <option value="weeks">Week</option>
+      <option value="months">Month</option>
+      <option value="years">Year</option>
+    </select></p>
+    <p><input type="button" value="Calculate" class="submit"></p>
   </form>
-  <div class="results"></div>
+  <div class="output"></div>
+  <script src="js/bundle.js"></script>
+  <script>
+    // Imports
+    var main = meditationCalculator.main();
+    var formatHours = main.formatHours;
+    var calcHoursOverPeriod = main.calcHoursOverPeriod;
+
+    // Elems
+    var submit = document.querySelector('.submit');
+    var value = document.querySelector('.value');
+    var format = document.querySelector('.format');
+    var duration = document.querySelector('.duration');
+    var years = document.querySelector('.years');
+    var outputFormat = document.querySelector('.outputFormat');
+    var output = document.querySelector('.output');
+
+    submit.onclick = function() {
+      var formatValue = format.options[format.selectedIndex].value;
+      var durationValue = duration.options[duration.selectedIndex].value;
+      var outputFormatValue = outputFormat.options[outputFormat.selectedIndex].value;
+
+      var resultInHours = calcHoursOverPeriod(
+        {
+          value: value.value,
+          duration: durationValue,
+          format: formatValue,
+          years: years.value,
+        }
+      );
+
+      var result = formatHours({
+        inputFormat: formatValue,
+        value: resultInHours,
+        outputFormat: outputFormatValue,
+      });
+
+      output.textContent = 'The result is: ' + result + ' ' + outputFormatValue;
+    }
+  </script>
 </body>
 </html>

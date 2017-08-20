@@ -32,6 +32,9 @@ export default function formatHours({ inputFormat, value, outputFormat }) {
     case Time.MINUTES:
       output = value * 60
       break;
+    case Time.HOURS:
+      output = value
+      break
     case Time.SECONDS:
       output = value * 60 * 60
       break;

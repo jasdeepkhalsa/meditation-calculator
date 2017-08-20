@@ -22,7 +22,6 @@ tests.forEach((test) => {
     it(`${test.value} ${test.format} per ${test.duration} for ${test.years} year(s)`, () => {
       expect(fn({
         value: test.value,
-        time: test.time,
         duration: test.duration,
         years: test.years
       })).toEqual(test.result);

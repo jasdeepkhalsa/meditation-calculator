@@ -50,6 +50,9 @@ function formatHours(_ref) {
     case Time.MINUTES:
       output = value * 60;
       break;
+    case Time.HOURS:
+      output = value;
+      break;
     case Time.SECONDS:
       output = value * 60 * 60;
       break;
@@ -102,7 +105,10 @@ function calcHoursOverPeriod(_ref) {
 }
 
 var main = function main() {
-  formatHours, calcHoursOverPeriod;
+  return {
+    formatHours: formatHours,
+    calcHoursOverPeriod: calcHoursOverPeriod
+  };
 };
 
 exports.main = main;

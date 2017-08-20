@@ -2,6 +2,7 @@ import fn from './formatHours'
 import { Time } from './timeEnum'
 
 const tests = [
+  { value: 1, format: Time.HOURS, result: 1 },
   { value: 2, format: Time.SECONDS, result: 7200 },
   { value: 2, format: Time.MINUTES, result: 120 },
   { value: 1, format: Time.SECONDS, result: 3600 },
