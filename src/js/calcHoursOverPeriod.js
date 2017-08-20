@@ -1,6 +1,6 @@
-const Time = require('./timeEnum')
+import { Time } from './timeEnum'
 
-function calcHoursOverPeriod({ value, duration, years, format }) {
+export default function calcHoursOverPeriod({ value, duration, years, format }) {
   let output = 0;
 
   switch ( format ) {
@@ -37,5 +37,3 @@ function calcHoursOverPeriod({ value, duration, years, format }) {
 
   return Math.round(output * 100) / 100
 }
-
-module.exports = calcHoursOverPeriod

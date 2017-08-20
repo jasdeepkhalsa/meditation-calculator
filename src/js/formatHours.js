@@ -1,6 +1,6 @@
-const Time = require('./timeEnum')
+import { Time } from './timeEnum'
 
-function formatHours({ inputFormat, value, outputFormat }) {
+export default function formatHours({ inputFormat, value, outputFormat }) {
   let output = 0;
 
   switch ( inputFormat ) {
@@ -39,5 +39,3 @@ function formatHours({ inputFormat, value, outputFormat }) {
 
   return Math.round(output * 100) / 100
 }
-
-module.exports = formatHours

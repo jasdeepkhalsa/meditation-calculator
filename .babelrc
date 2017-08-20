@@ -1,0 +1,17 @@
+{
+  "ignore": [
+    "node_modules/**"
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        "es2015",
+      ]
+    },
+    "production": {
+      "presets": [
+        ["es2015", { "modules": false }],
+      ],
+    }
+  },
+}

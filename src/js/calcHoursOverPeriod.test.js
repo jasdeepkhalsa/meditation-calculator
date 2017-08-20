@@ -1,5 +1,5 @@
-const fn = require('./calcHoursOverPeriod')
-const Time = require('./timeEnum')
+import fn from './calcHoursOverPeriod'
+import { Time } from './timeEnum'
 
 const tests = [
   { value: 1, format: Time.HOURS, duration: Time.DAYS, years: 1, result: 364 },

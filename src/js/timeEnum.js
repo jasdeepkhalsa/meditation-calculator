@@ -1,4 +1,4 @@
-const Time = {
+export const Time = {
   SECONDS: 'seconds',
   MINUTES: 'minutes',
   HOURS: 'hours',
@@ -7,5 +7,3 @@ const Time = {
   MONTHS: 'months',
   YEARS: 'years',
 }
-
-module.exports = Time

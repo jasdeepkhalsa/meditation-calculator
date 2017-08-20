@@ -1,5 +1,5 @@
-const fn = require('./formatHours')
-const Time = require('./timeEnum')
+import fn from './formatHours'
+import { Time } from './timeEnum'
 
 const tests = [
   { value: 2, format: Time.SECONDS, result: 7200 },
