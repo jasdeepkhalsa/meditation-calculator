@@ -7,7 +7,7 @@
 </head>
 <body>
   <h1 title="meditation goal calculator">Meditation Goal Calculator</h1>
-  <form class="meditation-calc">
+  <form>
     <p><label>Meditation Time:</label> <input class="value" /> <select class="format" />
       <option value="seconds">Seconds</option>
       <option value="minutes">Minutes</option>
@@ -18,8 +18,7 @@
       <option value="months">Month</option>
       <option value="years">Year</option>
     </select></p>
-    <p></p>
-    <p><label>Remaining Years:</label> <input type="text" class="years" /></p>
+    <p><label>Remaining Life (Life Expectancy) in Years:</label> <input type="text" class="years" /></p>
     <p><label>Output Time Format:</label> <select class="outputFormat" />
       <option value="seconds">Seconds</option>
       <option value="minutes">Minutes</option>
@@ -32,7 +31,7 @@
     <p><input type="button" value="Calculate" class="submit"></p>
   </form>
   <div class="output"></div>
-  <script src="js/bundle.js"></script>
+  <script src="src/js/bundle.js"></script>
   <script>
     // Imports
     var main = meditationCalculator.main();
