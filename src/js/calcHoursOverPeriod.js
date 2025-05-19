@@ -15,23 +15,37 @@ export default function calcHoursOverPeriod({ value, duration, years, format }) 
       break;
   }
 
+  let periodMultiplier;
+
   switch ( duration ) {
-    case Time.MINUTES:
-      output = output * 60
-      break;
     case Time.SECONDS:
-      output = output * 60 * 60
+      periodMultiplier = 364 * 24 * 60 * 60;
+      break;
+    case Time.MINUTES:
+      periodMultiplier = 364 * 24 * 60;
+      break;
+    case Time.HOURS:
+      // Number of hours in a 364-day year
+      periodMultiplier = 364 * 24;
       break;
     case Time.DAYS:
-      output = output * 7 * 52
+      periodMultiplier = 364;
       break;
     case Time.WEEKS:
-      output = output * 1 * 52
+      periodMultiplier = 52;
       break;
     case Time.MONTHS:
-      output = output * 12
+      periodMultiplier = 12;
+      break;
+    case Time.YEARS:
+      // The value is per year
+      periodMultiplier = 1;
+      break;
+    default:
+      periodMultiplier = 0;
       break;
   }
+  output = output * periodMultiplier;
 
   output = output * years
 
