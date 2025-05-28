@@ -1,19 +1,7 @@
 import formatHours from './formatHours'
 import calcHoursOverPeriod from './calcHoursOverPeriod'
 
-export const main = () => {
-  return {
-    formatHours: formatHours,
-    calcHoursOverPeriod: calcHoursOverPeriod,
-  }
-};
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Imports
-  var mainContext = meditationCalculator.main(); // Renamed 'main' to 'mainContext'
-  var formatHours = mainContext.formatHours;
-  var calcHoursOverPeriod = mainContext.calcHoursOverPeriod;
-
   // Elems
   var submit = document.querySelector('.submit');
   var value = document.querySelector('.value');
