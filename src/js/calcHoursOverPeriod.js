@@ -1,39 +1,56 @@
-import { Time } from './timeEnum'
+import { Time } from './timeEnum';
 
 export default function calcHoursOverPeriod({ value, duration, years, format }) {
-  let output = 0;
+  let numericValue = parseFloat(value);
+  let numericYears = parseFloat(years);
 
-  switch ( format ) {
+  if (isNaN(numericValue)) {
+    numericValue = 0;
+  }
+  if (isNaN(numericYears)) {
+    numericYears = 0;
+  }
+
+  let outputInHours = 0; // Renamed for clarity
+
+  switch (format) {
     case Time.MINUTES:
-      output = value / 60
+      outputInHours = numericValue / 60;
       break;
     case Time.SECONDS:
-      output = value / 60 / 60
+      outputInHours = numericValue / 3600; // Corrected from value / 60 / 60 for clarity
       break;
+    case Time.HOURS:
     default:
-      output = value
+      outputInHours = numericValue;
       break;
   }
 
-  switch ( duration ) {
-    case Time.MINUTES:
-      output = output * 60
-      break;
-    case Time.SECONDS:
-      output = output * 60 * 60
-      break;
+  let totalHours = 0;
+  switch (duration) {
     case Time.DAYS:
-      output = output * 7 * 52
+      totalHours = outputInHours * 365.25;
       break;
     case Time.WEEKS:
-      output = output * 1 * 52
+      totalHours = outputInHours * 52;
       break;
     case Time.MONTHS:
-      output = output * 12
+      totalHours = outputInHours * 12;
       break;
+    // Assuming duration will primarily be DAYS, WEEKS, MONTHS as per typical use case.
+    // Other Time enum values like SECONDS, MINUTES, HOURS if passed as 'duration'
+    // would result in totalHours = 0 based on the default, which seems reasonable
+    // unless specific logic for "X per minute over Y years" is required.
+    default:
+        totalHours = 0; 
+        break;
   }
 
-  output = output * years
+  let finalResult = totalHours * numericYears;
 
-  return Math.round(output * 100) / 100
+  if (isNaN(finalResult)) {
+    finalResult = 0;
+  }
+
+  return Math.round(finalResult * 100) / 100;
 }

@@ -1,44 +1,62 @@
-import { Time } from './timeEnum'
+import { Time } from './timeEnum';
 
-export default function formatHours({ inputFormat, value, outputFormat }) {
-  let output = 0;
-
-  switch ( inputFormat ) {
-    case Time.MINUTES:
-      output = value * 60
-      break;
-    case Time.SECONDS:
-      output = value * 60 * 60
-      break;
-    default:
-      output = value
-      break;
+export default function formatHours({ value, inputFormat = Time.HOURS, outputFormat }) {
+  let numericValue = parseFloat(value); 
+  if (isNaN(numericValue)) {
+    // If input value is not a number (e.g. empty string or non-numeric), treat as 0.
+    numericValue = 0; 
   }
 
-  switch ( outputFormat ) {
-    case Time.YEARS:
-    default:
-      output = ((value / 24 / 7) / 52)
-      break;
-    case Time.MONTHS:
-      output = ((value / 24 / 7) / 52) * 12
-      break;
-    case Time.WEEKS:
-      output = value / 24 / 7
-      break;
-    case Time.DAYS:
-      output = value / 24
+  let valueInHours = 0;
+
+  // 1. Normalize input 'value' to hours
+  switch (inputFormat) {
+    case Time.SECONDS:
+      valueInHours = numericValue / 3600;
       break;
     case Time.MINUTES:
-      output = value * 60
+      valueInHours = numericValue / 60;
       break;
     case Time.HOURS:
-      output = value
-      break
-    case Time.SECONDS:
-      output = value * 60 * 60
+    // Default case also handles if inputFormat is undefined or an unexpected value
+    default: 
+      valueInHours = numericValue;
       break;
   }
 
-  return Math.round(output * 100) / 100
+  let finalOutput = 0;
+
+  // 2. Convert from hours to the desired outputFormat
+  switch (outputFormat) {
+    case Time.YEARS:
+    // Default case for outputFormat is set to Time.YEARS
+    default: 
+      finalOutput = (valueInHours / 24) / 365.25;
+      break;
+    case Time.MONTHS:
+      finalOutput = (valueInHours / 24) / (365.25 / 12);
+      break;
+    case Time.WEEKS:
+      finalOutput = valueInHours / 24 / 7;
+      break;
+    case Time.DAYS:
+      finalOutput = valueInHours / 24;
+      break;
+    case Time.MINUTES:
+      finalOutput = valueInHours * 60;
+      break;
+    case Time.HOURS:
+      finalOutput = valueInHours;
+      break;
+    case Time.SECONDS:
+      finalOutput = valueInHours * 60 * 60;
+      break;
+  }
+  
+  // Ensure that if any calculation resulted in NaN, it's converted to 0 before rounding.
+  if (isNaN(finalOutput)) {
+      finalOutput = 0;
+  }
+
+  return Math.round(finalOutput * 100) / 100;
 }
