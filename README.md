@@ -46,12 +46,12 @@ To run this project locally:
 
 ## Deployment
 
-This project is automatically built and deployed to GitHub Pages upon pushes to the `main` branch.
+This project is automatically built and deployed to GitHub Pages upon pushes to the `master` branch.
 
 It is available at: [https://jasdeepkhalsa.github.io/meditation-calculator/](https://jasdeepkhalsa.github.io/meditation-calculator/)
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome.
 
-Please make sure to update tests as appropriate. (Note: Currently, backend unit tests for JS functions exist, but no specific UI/e2e tests are set up).
+Please make sure to update unit tests as appropriate.
