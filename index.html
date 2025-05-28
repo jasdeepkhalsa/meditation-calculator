@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meditation Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script type="module" crossorigin src="./assets/index-CrI5I75n.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BSctlng4.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 title="meditation goal calculator" class="my-4">Meditation Goal Calculator</h1>
+    <form>
+      <div class="mb-3">
+        <label for="meditationTime" class="form-label">Meditation Time:</label>
+        <div class="row">
+          <div class="col-sm-4">
+            <input type="number" id="meditationTime" class="form-control value" placeholder="Enter time">
+          </div>
+          <div class="col-sm-4">
+            <select id="meditationFormat" class="form-select format">
+              <option value="seconds">Seconds</option>
+              <option value="minutes">Minutes</option>
+              <option value="hours" selected>Hours</option>
+            </select>
+          </div>
+          <div class="col-sm-1 d-flex align-items-center justify-content-center">
+            <label for="meditationDuration" class="col-form-label">per</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="meditationDuration" class="form-select duration">
+              <option value="days">Day</option>
+              <option value="weeks">Week</option>
+              <option value="months">Month</option>
+              <option value="years">Year</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="lifeExpectancy" class="form-label">Remaining Life (Life Expectancy) in Years:</label>
+        <input type="text" id="lifeExpectancy" class="form-control years" placeholder="Enter years" aria-describedby="lifeExpectancyHint">
+        <small id="lifeExpectancyHint" class="form-text text-muted">Hint: Average life expectancy is ~76 years for men and ~81 years for women in the US.</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="outputFormatSelect" class="form-label">Output Time Format:</label>
+        <select id="outputFormatSelect" class="form-select outputFormat">
+          <option value="seconds">Seconds</option>
+          <option value="minutes">Minutes</option>
+          <option value="hours">Hours</option>
+          <option value="days">Day</option>
+          <option value="weeks">Week</option>
+          <option value="months">Month</option>
+          <option value="years" selected>Year</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-primary submit">Calculate</button>
+    </form>
+
+    <div class="output alert alert-info mt-4" role="alert"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
